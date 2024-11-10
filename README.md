@@ -15,15 +15,15 @@ To get started with the Nodepay Airdrop Bot:
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/Rambeboy/nodepay-node-bot.git && cd nodepay-node-bot
-    ```
+```bash
+git clone https://github.com/Rambeboy/nodepay-node-bot.git && cd nodepay-node-bot
+```
 
-2. Install the dependencies:
+3. Install the dependencies:
 
-    ```bash
-    npm install
-    ```
+```bash
+npm install
+```
 
 ## Configuration
 
@@ -34,21 +34,25 @@ Before running the bot, you need to create two text files:
 To get your Bearer token:
 
 1. **Register for a Nodepay account**:
-   - Go to [Nodepay Registration Page](https://app.nodepay.ai/register?ref=3WZFKKi0Hbvi1sd) and sign up for an account.
+- Go to [Nodepay Registration Page](https://app.nodepay.ai/register?ref=3WZFKKi0Hbvi1sd) and sign up for an account.
 
 2. **Get your token**:
-   - Open **DevTools** in your browser (right-click > Inspect or press `Ctrl+Shift+I`).
-   - Go to the **Console** tab in DevTools.
-   - Type the following command to get your token:
 
-     ```javascript
-     localStorage.getItem('np_webapp_token')
-     ```
+- Open **DevTools** in your browser (right-click > Inspect or press `Ctrl+Shift+I`).
 
-   - This will return the Bearer token. **Copy the token** (without the `Bearer` prefix, just the alphanumeric string).
+- Go to the **Console** tab in DevTools.
+
+- Type the following command to get your token:
+
+```javascript
+localStorage.getItem('np_webapp_token')
+
+```
+
+- This will return the Bearer token. **Copy the token** (without the `Bearer` prefix, just the alphanumeric string).
 
 3. **Paste the token in `token.txt`**:
-   - Create a `token.txt` file in the root of your project and paste your token in the file (one token per line).
+- Create a `token.txt` file in the root of your project and paste your token in the file (one token per line).
 
 Example `token.txt`:
 
@@ -62,17 +66,17 @@ ey...
 
 - Add your proxy details in `proxy.txt`. Each line should have the format:
 
-  ```text
-  host:port:username:password
-  ```
+```text
+host:port:username:password
+```
 
 - Example:
 
-  ```text
-  123.45.67.89:8080:username:password
-  123.45.67.89:8080:username:password
-  123.45.67.89:8080:username:password
-  ```
+```text
+123.45.67.89:8080:username:password
+123.45.67.89:8080:username:password
+123.45.67.89:8080:username:password
+```
 
 ## Running the Bot
 
@@ -94,13 +98,6 @@ The bot will log the status and activity, including:
 
 Logs are stored in `bot.log` and can also be seen in the console.
 
-## Donations
-
-If you would like to support the development of this project, you can make a donation using the following addresses:
-
-- **Solana**: `GLQMG8j23ookY8Af1uLUg4CQzuQYhXcx56rkpZkyiJvP`
-- **EVM**: `0x960EDa0D16f4D70df60629117ad6e5F1E13B8F44`
-- **BTC**: `bc1p9za9ctgwwvc7amdng8gvrjpwhnhnwaxzj3nfv07szqwrsrudfh6qvvxrj8`
 
 ## License
 
