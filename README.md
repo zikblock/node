@@ -60,7 +60,7 @@ localStorage.getItem('np_webapp_token')
 3. **Paste the token in `token.txt`**:
 - Create a `token.txt` file in the root of your project and paste your token in the file (one token per line).
 
-Example `token.txt`:
+- Example `token.txt`:
 
 ```text
 ey...
