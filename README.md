@@ -1,4 +1,6 @@
-# nodepay-airdrop-bot
+# NODEPAY
+
+![img](assets/image.png)
 
 A bot for automating Nodepay airdrop interactions, including session management and pinging with proxy support.
 
@@ -14,8 +16,7 @@ To get started with the Nodepay Airdrop Bot:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/dante4rt/nodepay-airdrop-bot.git
-    cd nodepay-airdrop-bot
+    git clone https://github.com/Rambeboy/nodepay-node-bot.git && cd nodepay-node-bot
     ```
 
 2. Install the dependencies:
