@@ -4,10 +4,14 @@
 
 A bot for automating Nodepay airdrop interactions, including session management and pinging with proxy support.
 
+---
+
 ## Requirements
 
 1. **Node.js** (version 14 or higher)
 2. **npm** (Node package manager)
+
+---
 
 ## Installation
 
@@ -16,7 +20,7 @@ To get started with the Nodepay Airdrop Bot:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Rambeboy/nodepay-node-bot.git && cd nodepay-node-bot
+git clone https://github.com/Rambeboy/nodepay-airdrop-bot.git && cd nodepay-airdrop-bot
 ```
 
 3. Install the dependencies:
@@ -24,6 +28,8 @@ git clone https://github.com/Rambeboy/nodepay-node-bot.git && cd nodepay-node-bo
 ```bash
 npm install
 ```
+
+---
 
 ## Configuration
 
@@ -78,6 +84,8 @@ host:port:username:password
 123.45.67.89:8080:username:password
 ```
 
+---
+
 ## Running the Bot
 
 To start the bot, run the following command:
@@ -87,6 +95,8 @@ npm start
 ```
 
 The bot will begin the process of connecting to the session, sending pings, and logging relevant information.
+
+---
 
 ## Logs
 
@@ -98,6 +108,8 @@ The bot will log the status and activity, including:
 
 Logs are stored in `bot.log` and can also be seen in the console.
 
+
+---
 
 ## License
 
