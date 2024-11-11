@@ -2,7 +2,12 @@ require('colors');
 const Config = require('./src/config');
 const Bot = require('./src/bot');
 const initLogger = require('./src/logger');
-const { readLines, displayHeader, askAccountType } = require('./src/utils');
+const {
+  readLines,
+  displayHeader,
+  askAccountType,
+  askProxyMode,
+} = require('./src/utils');
 
 async function main() {
   displayHeader();
@@ -12,22 +17,31 @@ async function main() {
   const logger = initLogger();
 
   const tokens = await readLines('token.txt');
-  const proxies = await readLines('proxy.txt').then((lines) =>
-    lines
-      .map((line) => {
-        const [host, port, username, password] = line.split(':');
-        if (!host || !port) {
-          console.log(`⚠️  ${'Invalid proxy format in'.red} proxy.txt`.yellow);
-          return null;
-        }
-        return { host, port, username, password };
-      })
-      .filter(Boolean)
-  );
+  const useProxy = await askProxyMode();
 
-  if (tokens.length > proxies.length) {
-    console.log(`⚠️  ${'Not enough proxies for the number of tokens'.yellow}`);
-    return;
+  let proxies = [];
+  if (useProxy) {
+    proxies = await readLines('proxy.txt').then((lines) =>
+      lines
+        .map((line) => {
+          const [host, port, username, password] = line.split(':');
+          if (!host || !port) {
+            console.log(
+              `⚠️  ${'Invalid proxy format in'.red} proxy.txt`.yellow
+            );
+            return null;
+          }
+          return { host, port, username, password };
+        })
+        .filter(Boolean)
+    );
+
+    if (tokens.length > proxies.length) {
+      console.log(
+        `⚠️  ${'Not enough proxies for the number of tokens'.yellow}`
+      );
+      return;
+    }
   }
 
   const accountType = await askAccountType();
@@ -36,15 +50,21 @@ async function main() {
   if (accountType === 'Single Account') {
     const singleToken = tokens[0];
 
-    for (const proxy of proxies) {
+    if (useProxy) {
+      for (const proxy of proxies) {
+        bot
+          .connect(singleToken, proxy)
+          .catch((err) => console.log(`❌ ${err.message}`.red));
+      }
+    } else {
       bot
-        .connect(singleToken, proxy)
+        .connect(singleToken)
         .catch((err) => console.log(`❌ ${err.message}`.red));
     }
   } else {
     for (let i = 0; i < tokens.length; i++) {
       const token = tokens[i];
-      const proxy = proxies[i];
+      const proxy = useProxy ? proxies[i] : null;
       bot
         .connect(token, proxy)
         .catch((err) => console.log(`❌ ${err.message}`.red));
