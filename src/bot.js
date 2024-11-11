@@ -9,7 +9,7 @@ class Bot {
     this.proxyCheck = new ProxyChecker(config, logger);
   }
 
-  async connect(token, proxy) {
+  async connect(token, proxy = null) {
     try {
       const userAgent = 'Mozilla/5.0 ... Safari/537.3';
       const accountInfo = await this.getSession(token, userAgent, proxy);
@@ -20,6 +20,7 @@ class Bot {
       this.logger.info('Session info', {
         uid: accountInfo.uid,
         name: accountInfo.name,
+        useProxy: !!proxy,
       });
 
       console.log('');
@@ -42,19 +43,20 @@ class Bot {
 
   async getSession(token, userAgent, proxy) {
     try {
-      const response = await axios.post(
-        this.config.sessionURL,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            'User-Agent': userAgent,
-            Accept: 'application/json',
-          },
-          proxy: this.buildProxyConfig(proxy),
-        }
-      );
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'User-Agent': userAgent,
+          Accept: 'application/json',
+        },
+      };
+
+      if (proxy) {
+        config.proxy = this.buildProxyConfig(proxy);
+      }
+
+      const response = await axios.post(this.config.sessionURL, {}, config);
       return response.data.data;
     } catch (error) {
       throw new Error('Session request failed');
@@ -74,20 +76,25 @@ class Bot {
     };
 
     try {
-      await axios.post(this.config.pingURL, pingData, {
+      const config = {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
           'User-Agent': userAgent,
           Accept: 'application/json',
         },
-        proxy: this.buildProxyConfig(proxy),
-      });
+      };
+
+      if (proxy) {
+        config.proxy = this.buildProxyConfig(proxy);
+      }
+
+      await axios.post(this.config.pingURL, pingData, config);
       console.log(`📡 ${'Ping sent'.cyan} for UID: ${uid}`);
       this.logger.info('Ping sent', {
         uid,
         browserId,
-        ip: proxy ? proxy.host : 'unknown',
+        ip: proxy ? proxy.host : 'direct',
       });
     } catch (error) {
       throw new Error('Ping request failed');
