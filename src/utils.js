@@ -15,11 +15,11 @@ async function readLines(filename) {
 
 function displayHeader() {
   process.stdout.write('\x1Bc');
-  console.log('================================='.cyan);
-  console.log('=       NODEPAY NODE BOT        ='.cyan);
-  console.log('=     Author : Nofan Rambe      ='.cyan);
-  console.log('=       Github: Rambeboy        ='.cyan);
-  console.log('================================='.cyan);
+  console.log('=============================='.cyan);
+  console.log('=    NODEPAY AIRDROP BOT     ='.cyan);
+  console.log('=    Author : Nofan Rambe    ='.cyan);
+  console.log('=     Github : Rambeboy      ='.cyan);
+  console.log('=============================='.cyan);
   console.log();
 }
 
@@ -38,4 +38,19 @@ async function askAccountType() {
   return answers.accountType;
 }
 
-module.exports = { readLines, displayHeader, askAccountType };
+async function askProxyMode() {
+  const answers = await inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'useProxy',
+      message: 'Would you like to use proxies?',
+      default: true,
+    },
+  ]);
+
+  console.log('');
+
+  return answers.useProxy;
+}
+
+module.exports = { readLines, displayHeader, askAccountType, askProxyMode };
