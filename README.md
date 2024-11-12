@@ -49,11 +49,9 @@ To get your Bearer token:
 - Go to the **Console** tab in DevTools.
 
 - Type the following command to get your token:
-
-```javascript
-localStorage.getItem('np_webapp_token')
-
-```
+  ```javascript
+localStorage.getItem('np_webapp_token') 
+  ```
 
 - This will return the Bearer token. **Copy the token** (without the `Bearer` prefix, just the alphanumeric string).
 
