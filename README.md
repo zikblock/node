@@ -20,7 +20,7 @@ To get started with the Nodepay Airdrop Bot:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Rambeboy/nodepay-airdrop-bot.git && cd nodepay-airdrop-bot
+git clone https://github.com/Rambeboy/nodepay-network-bot.git && cd nodepay-network-bot
 ```
 
 3. Install the dependencies:
