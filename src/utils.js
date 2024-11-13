@@ -14,6 +14,7 @@ async function readLines(filename) {
 }
 
 function displayHeader() {
+  process.stdout.write('\x1Bc');
   const banner = figlet.textSync("NODEPAY NETWORK", {
     font: "ANSI Shadow",
     horizontalLayout: "default",
@@ -21,7 +22,6 @@ function displayHeader() {
     width: 100,
   });
   console.log(colors.style(banner, "header"));
-  process.stdout.write('\x1Bc');
   console.log('=============================='.cyan);
   console.log('=    NODEPAY NETWORK BOT     ='.cyan);
   console.log('=    WELCOME & ENJOY SIR!    ='.cyan);
