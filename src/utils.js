@@ -15,13 +15,13 @@ async function readLines(filename) {
 
 function displayHeader() {
   process.stdout.write('\x1Bc');
-  const banner = figlet.textSync("NODEPAY NETWORK"), {
-    font: "Standard",
+  const asciiArt = figlet.textSync("NODEPAY NETWORK"), {
+    font: "ANSI Shadow",
     horizontalLayout: "default",
     verticalLayout: "default",
     width: 100,
   });
-  console.log(colors.style(banner, "header"));
+  console.log(asciiArt);
   console.log('=============================='.cyan);
   console.log('=    NODEPAY NETWORK BOT     ='.cyan);
   console.log('=    WELCOME & ENJOY SIR!    ='.cyan);
