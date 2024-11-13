@@ -14,6 +14,7 @@ async function readLines(filename) {
 }
 
 function displayHeader() {
+  process.stdout.write('\x1Bc');
   print(f"{Fore.CYAN}" + """
 
 ███╗   ██╗ ██████╗ ██████╗ ███████╗██████╗  █████╗ ██╗   ██╗  
@@ -32,7 +33,6 @@ function displayHeader() {
                                                               
 
   """ + Style.RESET_ALL)
-  process.stdout.write('\x1Bc');
   console.log('=============================='.cyan);
   console.log('=    NODEPAY NETWORK BOT     ='.cyan);
   console.log('=    WELCOME & ENJOY SIR!    ='.cyan);
