@@ -12,22 +12,29 @@ async function readLines(filename) {
   for await (const line of rl) lines.push(line.trim());
   return lines;
 }
+const figlet = require("figlet");
+const { ColorTheme } = require("./colors");
 
-function displayHeader() {
-  process.stdout.write('\x1Bc');
-  const asciiArt = figlet.textSync("NODEPAY NETWORK"), {
+const colors = new ColorTheme();
+
+function displayBanner() {
+  const banner = figlet.textSync("NODEPAY NETWORK"), {
     font: "ANSI Shadow",
     horizontalLayout: "default",
     verticalLayout: "default",
     width: 100,
   });
-  console.log(asciiArt);
-  console.log('=============================='.cyan);
-  console.log('=    NODEPAY NETWORK BOT     ='.cyan);
-  console.log('=    WELCOME & ENJOY SIR!    ='.cyan);
-  console.log('=    AUTHOR : NOFAN RAMBE    ='.cyan);
-  console.log('=============================='.cyan);
-  console.log();
+
+  console.log(colors.style(banner, "header"));
+  console.log(
+  colors.style("===============================================", "border")
+  );
+  console.log(colors.style("NODEPAY NETWORK BOT",               "link"));
+  console.log(colors.style("WELCOME & ENJOY SIR!",              "link"));
+  console.log(colors.style("AUTHOR : NOFAN RAMBE",              "link"));
+  console.log(
+  colors.style("===============================================\n", "border")
+  );
 }
 
 async function askAccountType() {
