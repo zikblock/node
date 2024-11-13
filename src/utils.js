@@ -14,7 +14,7 @@ async function readLines(filename) {
 }
 
 function displayHeader() {
-  const header = figlet.textSync("NODEPAY NETWORK", {
+  const utils = figlet.textSync("NODEPAY NETWORK", {
     font: "ANSI Shadow",
     horizontalLayout: "default",
     verticalLayout: "default",
