@@ -14,11 +14,13 @@ async function readLines(filename) {
 }
 
 function displayHeader() {
+  
+  
   process.stdout.write('\x1Bc');
   console.log('=============================='.cyan);
   console.log('=    NODEPAY AIRDROP BOT     ='.cyan);
-  console.log('=    Author : Nofan Rambe    ='.cyan);
-  console.log('=     Github : Rambeboy      ='.cyan);
+  console.log('=    WELCOME & ENJOY SIR!    ='.cyan);
+  console.log('=    AUTHOR : NOFAN RAMBE    ='.cyan);
   console.log('=============================='.cyan);
   console.log();
 }
